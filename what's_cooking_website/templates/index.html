@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>What's Cooking?</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-dark navbar-expand-sm bg-dark">
+            <p id="title">What's Cooking</p>
+            <p id="admin-acc"> <a href="admin.html">Admin Access</a></p>
+        </nav>
+        <section>
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <p id="presentation">Insert some ingredients and our model will predict the typical cuisine they belong to!</p>
+                    <p id="kaggle-pres">This system was inspired by this <a href="https://www.kaggle.com/c/whats-cooking/">kaggle competition</a></p>
+                </div>
+            </div>
+        </section>
+        <div class="search-container">
+            <form action="">
+                <input type="text" placeholder="Insert your recipe.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+        {% if ser %}
+        <div class="response">
+            <p>Your recipe is probably <b id="resp-c">{{ resp }}</b> ({{ resp_proba | format_perc }} matching)</p>
+            <figure>
+                <img src="static/res/{{ resp }}.png", height="200", width="350">
+            </figure>
+        </div>
+        {% endif %}
+        <div class="table table-striped">
+            <p>{{ a }}</p>
+            <table>
+                {% for row_index in range(x['probs']|count) %}
+                    <tr>
+                        <td>{{ x.index[row_index] }}</td>
+                        <td>{{ x['probs'][row_index] | format_perc }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <footer class="page-footer jumbotron text-center">
+            <p>Made by Federico Cichetti and Nicolò Sponziello</p>
+        </footer>
+    </body>
+</html>
