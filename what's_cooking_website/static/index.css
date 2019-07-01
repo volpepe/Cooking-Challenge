@@ -62,7 +62,10 @@ form input{
 
 footer{
     width: 100%;
-    min-height: 30px;
+    min-height: 50px;
     margin-bottom: 100px;
     text-align: center;
+}
+main {
+    min-height: 90vh;
 }
