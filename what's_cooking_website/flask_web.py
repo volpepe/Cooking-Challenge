@@ -3,8 +3,6 @@ import pickle
 import pandas as pd
 import os
 
-#idea to have multiple models: make an object that is modified by one of these functions in the admin page
-
 app = Flask(__name__)
 
 class ModelFile():
