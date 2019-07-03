@@ -2,11 +2,12 @@ from flask import Flask, request, render_template
 import pickle
 import pandas as pd
 import os
+import nltk
 
 app = Flask(__name__)
 
 class ModelFile():
-    model_file = "model.bin"
+    model_file = os.listdir("models")[0]
 
 model_manager = ModelFile()
 
