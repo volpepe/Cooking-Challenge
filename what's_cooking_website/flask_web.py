@@ -27,18 +27,23 @@ def predict():
         #change filename to change model to load up
         with app.open_resource("models/"+model_manager.model_file, "rb") as f:
             model = pickle.load(f)
-        #output = model.predict(inputs)[0]
-        probabilities = pd.DataFrame(model.predict_proba(inputs)*100, columns=model.classes_, index=["probs"]).T.sort_values(["probs"], ascending=False).head(4)
-        output_probability = probabilities.values.max()
-        output = probabilities.index[0]
-        print(output)
-        print(probabilities)
+        has_proba = hasattr(model, 'predict_proba')
+        print(has_proba)
+        if has_proba:
+            probabilities = pd.DataFrame(model.predict_proba(inputs)*100, columns=model.classes_, index=["probs"]).T.sort_values(["probs"], ascending=False).head(4)
+            output_probability = probabilities.values.max()
+            output = probabilities.index[0]
+            print(probabilities)
+        else:
+            probabilities = pd.DataFrame()
+            output_probability = "None"
+            output = model.predict(inputs)[0]
         if (output == "southern_us"):
             output = "south american"
         elif (output == "cajun_creole"):
             output = "cajun-creole"
-        return render_template("index.html", model=model_manager.model_file, resp=output, resp_proba=output_probability, a="Other possible values are:", x=probabilities.iloc[1:], ser=True)
-    return render_template("index.html", model=model_manager.model_file, resp="", resp_proba="", a="", x="", ser=False)
+        return render_template("index.html", model=model_manager.model_file, resp=output, resp_proba=output_probability, a="Other possible values are:", x=probabilities.iloc[1:], ser=True, allow_prob=has_proba)
+    return render_template("index.html", model=model_manager.model_file, resp="", resp_proba="", a="", x="", ser=False, allow_prob=True)
 
 
 @app.template_filter('format_perc')

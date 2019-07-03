@@ -34,12 +34,13 @@
             </div>
             {% if ser %}
             <div class="response">
-                <p>Your recipe is probably <b id="resp-c">{{ resp }}</b> ({{ resp_proba | format_perc }} matching)</p>
+                <p>Your recipe is probably <b id="resp-c">{{ resp }}</b> {% if allow_prob %} ({{ resp_proba | format_perc }} matching) {% endif %}</p>
                 <figure>
                     <img src="static/res/{{ resp }}.png", height="200", width="350">
                 </figure>
             </div>
             {% endif %}
+            {% if allow_prob %}
             <div class="table table-striped">
                 <p>{{ a }}</p>
                 <table>
@@ -51,6 +52,9 @@
                     {% endfor %}
                 </table>
             </div>
+            {% else %}
+            <p id="no-proba">This model does not allow matching percentages.</p>
+            {% endif %}
         </main>
         <footer class="page-footer jumbotron text-center">
             <p>Made by Federico Cichetti and Nicolò Sponziello</p>

@@ -69,3 +69,9 @@ footer{
 main {
     min-height: 90vh;
 }
+
+#no-proba{
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+}
