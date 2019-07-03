@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>What's Cooking?</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <main>
+            <nav class="navbar navbar-dark navbar-expand-sm bg-dark">
+                <p id="title">What's Cooking</p>
+                <p class="ml-auto"><a id="back" href="/" class="btn btn-default">Go Back</a></p>
+            </nav>
+            <section>
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <h1>Admin page</h1>
+                    </div>
+                </div>
+            </section>
+            <div class="row justify-content-center">
+                <form action="/" method="POST">
+                    <div class="col-12 model-selection">
+                        <select name="model" id="model">
+                                {% for model in models %}
+                                <option value="{{model}}">{{model}}</option>
+                                {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-12 text-center accept">
+                        <button class="btn btn-default" type="submit">Set model</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+        <footer class="page-footer jumbotron text-center">
+            <p>Made by Federico Cichetti and Nicolò Sponziello</p>
+        </footer>
+    </body>
+</html>

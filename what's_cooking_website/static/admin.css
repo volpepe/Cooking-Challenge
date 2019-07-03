@@ -1,0 +1,29 @@
+h1 {
+    text-align: center;
+}
+.model-selection {
+    text-align: center;
+}
+#back{
+    background-color: lightgray;
+    color:black;
+    border-radius: 5px;
+    text-align: right;
+}
+#title {
+    font-size: 40px;
+    text-align: center;
+    width: 80%;
+    padding-left: 30%;
+    padding-right: 10%;
+    color: rgb(224, 65, 65);
+}
+main {
+    height: 80vh;
+}
+.accept {
+    padding-top: 30px;
+}
+.accept > button {
+    background-color: lightgray;
+}
