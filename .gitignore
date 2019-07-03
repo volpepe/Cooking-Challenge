@@ -2,3 +2,4 @@ pickle
 nltk
 *.pyc
 .ipynb_checkpoints/*
+what's_cooking_website/models/*
