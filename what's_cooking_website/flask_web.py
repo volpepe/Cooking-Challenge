@@ -24,7 +24,7 @@ def predict():
             str(request.args["search"])
         ]
         #change filename to change model to load up
-        with app.open_resource(model_manager.model_file, "rb") as f:
+        with app.open_resource("models/"+model_manager.model_file, "rb") as f:
             model = pickle.load(f)
         #output = model.predict(inputs)[0]
         probabilities = pd.DataFrame(model.predict_proba(inputs)*100, columns=model.classes_, index=["probs"]).T.sort_values(["probs"], ascending=False).head(4)
