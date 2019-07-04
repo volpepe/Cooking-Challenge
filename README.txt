@@ -11,4 +11,6 @@ export FLASK_DEBUG=true
 python -m flask run
 
 su Linux:
-xxx
+export FLASK_APP=flask_web.py
+export FLASK_ENV=development
+flask run
