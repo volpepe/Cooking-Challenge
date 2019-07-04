@@ -6,8 +6,8 @@ La cartella contiene:
 - what's_cooking_website: una cartella contenente il sito web sviluppato con Flask. Il sito web utilizza modelli costruiti nel notebook jupyter salvati nella cartella "models". Per avviarlo si possono utilizzare i due launcher presenti nella cartella stessa o lanciare i seguenti comandi da terminale:
 
 su Windows:
-export FLASK_APP=flask_web
-export FLASK_DEBUG=true
+set FLASK_APP=flask_web
+set FLASK_DEBUG=true
 python -m flask run
 
 su Linux:
